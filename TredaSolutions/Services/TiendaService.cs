@@ -20,9 +20,9 @@ namespace TredaSolutions.Services
         {
            await  _tiendaRepository.SaveTienda(tienda);
         }
-        public async Task<bool> ValidateSKU(Tienda tienda)
+        public async Task<bool> ValidateName(Tienda tienda)
         {
-          var validateExistence= await  _tiendaRepository.ValidateSKU(tienda);
+          var validateExistence= await  _tiendaRepository.ValidateName(tienda);
             return validateExistence;
         }
     }

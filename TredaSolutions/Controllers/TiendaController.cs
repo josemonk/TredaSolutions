@@ -24,7 +24,7 @@ namespace TredaSolutions.Controllers
         {
             try
             {
-                var validatienda = await _tiendaService.ValidateSKU(tienda);
+                var validatienda = await _tiendaService.ValidateName(tienda);
                 if (validatienda)
                 {
                     return BadRequest(new { message = "la tienda " + tienda.Nombre + " ya existe" });

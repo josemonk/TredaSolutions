@@ -42,8 +42,10 @@ namespace TredaSolutions
             services.AddDbContext<AplicationDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Conexion")));
             //repository
             services.AddScoped<ITiendaRepository, TiendaRepository>();
+            services.AddScoped<IProductoRepository, ProductoRepository>();
             //services
             services.AddScoped<ITiendaService, TiendaService>();
+            services.AddScoped<IProductoService, ProductoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

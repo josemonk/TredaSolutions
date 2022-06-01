@@ -18,5 +18,7 @@ namespace TredaSolutions.Domains.Models
         public int Valor { get; set; }
         [Required]
         public int TiendaId { get; set; }
+        [Required]
+        public string Nombre { get; set; }
     }
 }

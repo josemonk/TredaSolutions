@@ -6,9 +6,9 @@ using TredaSolutions.Domains.Models;
 
 namespace TredaSolutions.Domains.IServices
 {
-    public  interface ITiendaService
+    public  interface IProductoService
     {
-        public Task SaveTienda(Tienda tienda);
-        public Task<bool> ValidateName(Tienda tienda);
+        public Task SaveProducto(Producto producto);
+        public Task<bool> ValidateSKU(Producto producto);
     }
 }

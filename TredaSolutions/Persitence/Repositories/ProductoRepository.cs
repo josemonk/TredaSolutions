@@ -9,22 +9,22 @@ using TredaSolutions.Persitence.Context;
 
 namespace TredaSolutions.Persitence.Repositories
 {
-    public class TiendaRepository : ITiendaRepository
+    public class ProductoRepository : IProductoRepository
     {
         public readonly AplicationDbContext _context;
-        public TiendaRepository( AplicationDbContext context)
+        public ProductoRepository(AplicationDbContext context)
         {
             _context = context;
         }
-        public async Task SaveTienda(Tienda tienda)
+        public async Task SaveProducto(Producto producto)
         {
-            _context.tiendas.Add(tienda);
+            _context.productos.Add(producto);
             await _context.SaveChangesAsync();
         }
-        public async Task<bool> ValidateName(Tienda tienda)
+        public async Task<bool> ValidateSKU(Producto producto)
         {
-            var validateExistence = await _context.tiendas.AnyAsync(x => x.Nombre == tienda.Nombre);
-            return validateExistence;
+            var validateSKU = await _context.productos.AnyAsync(x => x.SKU == producto.SKU);
+            return validateSKU;
         }
     }
 }
