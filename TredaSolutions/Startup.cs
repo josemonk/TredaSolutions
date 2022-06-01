@@ -12,7 +12,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TredaSolutions.Domains.IRepositories;
+using TredaSolutions.Domains.IServices;
 using TredaSolutions.Persitence.Context;
+using TredaSolutions.Persitence.Repositories;
+using TredaSolutions.Services;
 
 namespace TredaSolutions
 {
@@ -34,7 +38,12 @@ namespace TredaSolutions
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TredaSolutions", Version = "v1" });
             });
+            //conexion
             services.AddDbContext<AplicationDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("Conexion")));
+            //repository
+            services.AddScoped<ITiendaRepository, TiendaRepository>();
+            //services
+            services.AddScoped<ITiendaService, TiendaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
