@@ -14,7 +14,8 @@ namespace TredaSolutions.Domains.Models
         [Required]
         [Column(TypeName ="varchar(50)")]
         public string Nombre { get; set; }
-        public DateTime FechaApertura { get; set; }
+        [RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\-)(((0)[0-9])|((1)[0-2]))(\-)\d{4}$")]
+        public string FechaApertura { get; set; }
         public List<Producto>Productos { get; set; }
     }
 }

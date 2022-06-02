@@ -24,16 +24,22 @@ namespace TredaSolutions.Controllers
         {
             try
             {
-                var validatienda = await _tiendaService.ValidateName(tienda);
-                if (validatienda)
+                if (ModelState.IsValid)
                 {
-                    return BadRequest(new { message = "la tienda " + tienda.Nombre + " ya existe" });
+                    var validatienda = await _tiendaService.ValidateName(tienda);
+                    if (validatienda)
+                    {
+                        return BadRequest(new { message = "la tienda " + tienda.Nombre + " ya existe" });
+                    }
+                    await _tiendaService.SaveTienda(tienda);
+                    return Ok(new { message = "La tienda se registro con exito!" });
                 }
-                tienda.FechaApertura = DateTime.Now;
-                await _tiendaService.SaveTienda(tienda);
-                return Ok(new { message = "La tienda se registro con exito!" });
-
-            }catch(Exception ex)
+                else
+                {
+                    return BadRequest(new { message = "invalido!" });
+                }
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
